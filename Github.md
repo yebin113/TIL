@@ -18,7 +18,11 @@
 
 `git clone 주소(https://github.com/yebin113/gitpractice0713) `  :원격 저장소에서 전체 파일을 복제해오는것
 
+`git remote set-url origin 새 주소` : push 하고 싶은 **새 주소로 변경**하고 싶을 때
+
 `git pull` : 원격저장소에서 변경 사항만 복제해옴 (복제할 변경사항이 있는 파일 해당 폴더로 이동해야함 `cd gitpractice0713`)
+
+
 
 ### git 에 파일 push하고 싶을때
 
