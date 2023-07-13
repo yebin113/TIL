@@ -27,7 +27,7 @@
 ### git 에 파일 push하고 싶을때
 
 1. `git init`
-2. ``touch 파일명`
+2. `touch 파일명`
 3. 파일수정
 4. `git add 파일명`
 5. `git commit -m "first commit"`
