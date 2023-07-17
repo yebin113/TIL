@@ -12,6 +12,8 @@
 
 `git push origin master` :  origin이라는 원격 저장소에 master을 push
 
+`git remote -v` : git  주소 확인
+
 파일에 변경사항이 발생했을 때 `add` 후 `commit` 한 뒤 다시 `push` 해야 업데이트 됨
 
 자리바꿨을 때 window 자격 증명 git 삭제하기
