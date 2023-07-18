@@ -1,4 +1,4 @@
-# VS code 단축키
+# VS code tip
 
 복사하기
 
