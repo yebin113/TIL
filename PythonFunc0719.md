@@ -90,6 +90,21 @@
   - 반환값이 없는 함수는 리턴값이 None
 
     `result = greet ('Alice')`
+  
+- **print vs return**
+
+  ```py
+  def add(a,b)
+  	return a + b  #return값을 명시하지 않으면 NONE으로 인식
+  a = print('hello')
+  print(a)   #NONE
+  #print는 return 값이 없음
+  
+  a = add(1,2)
+  print(a)   #3
+  ```
+
+  
 
 ---
 ### 매개변수
