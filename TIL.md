@@ -49,24 +49,18 @@
 
 ### Dict(딕셔너리)
 
-- 딕셔너리 입력방법
 
-  ```py
-  censored_user_list = {}
-  censored_user_list[dummy['company']]=[dummy['name']]
-  ```
 
-  
 
 - **딕셔너리 안의 딕셔너리** 에 접근 하고 싶을때
   
-  - `dict_1[n][m]`  - dict_1의 n-1 번째 요소인 딕셔너리 안의 m-1번째 요소
+  - `dict_1[n][m]`  - dict_1의 n 번째 요소인 딕셔너리 안의 m번째 요소
   
 - 키와 value에 접근하고 싶으면 
 
   ```py
   for key in dict:
-      print(ket,key[i])
+      print(key,key[i])
   ```
 
 - key - value 쌍으로 이루어진 순서와 중복이 없는 변경 가능한 자료형
@@ -287,4 +281,128 @@ response = requests.get(API_URL)
 # JSON -> dict 데이터 변환
 parsed_data = response.json()
 ```
+
+### 자주 쓰이는 메서드
+| 메서드                         | 설명                                       |
+| ------------------------------ | ------------------------------------------ |
+| `s. split(sep:=None, maxsplit=-1)` | 공백이나 특정 문자를 기준으로 분리 |
+`'separator'.join([iterable])`|구분자로 iterable을 합침|
+`L.append(x)`|리스트 마지막에 항목 x를 추가|
+`L.pop(i)`|리스트의 지정한 인덱스의 항목을 제거하고 반환, 작성하지 않을 경우 마지막 항목 제거|
+| `L.reverse()` | 리스트를 거꾸로 나열                                     |
+| `L.sort()`    | 리스트를 정렬(매개변수 이용가능) - 원본을 바꿔서 반환값x |
+
+
+#### `s. split(sep:=None, maxsplit=-1)`
+
+- 지정한 문자를 구분자로 문자열을 분리하여 문자열의 리스트로 반환
+
+```py
+text = 'Hello, world'
+words = text.split(',')
+print(words)	#['Hello', ' world']
+```
+
+
+
+#### `'separator'.join([iterable])`
+
+- iterable 요소들을 원래의 문자열을 구분자로 이용하여 하나의 문자열로 연결
+- split의 반대 함수라고 볼 수 있음
+
+```py
+words = ['Hello', ' world']
+text = '-'.join(words)
+print(text)		#Hello- world
+```
+
+
+#### `L.append(x)` vs `L.extend(x)` vs`L.insert(i,x)`
+
+- append
+
+```py
+numbers = [1,2,3]
+numbers2 = [4,5,6]
+
+numbers.append(numbers2)
+print(numbers)		#[1, 2, 3, [4, 5, 6]]
+```
+
+- extend
+
+```py
+numbers = [1,2,3]
+numbers2 = 4
+
+numbers.extend([numbers2])
+print(numbers)		#[1, 2, 3, 4]
+
+# 그냥 요소 한개만 넣으면 extend 에서 에러.. type error iterable 하지 않음
+# 따라서 리스트로 타입 변환 해주기!
+
+```
+
+- insert
+
+```py
+numbers = [1,2,3]
+numbers.insert(1,5)
+
+print(numbers)      #[1, 5, 2, 3]
+```
+
+#### `L.pop(i)` - 중요 (append의 반대)
+
+- 리스트의 지정한 인덱스의 항목을 제거하고 반환, 작성하지 않을 경우 마지막 항목 제거
+
+```py
+numbers = [1,2,3]
+item = numbers.pop()
+item1 = numbers.pop(0)
+
+print(item)      # 3
+print(item1)    # 1
+print(numbers)  # [2]
+```
+
+
+
+#### `L.sort()` vs`L.reverse()`
+
+```py
+numbers = [3,2,1]
+numbers.sort()
+print(numbers)      #[1, 2, 3]
+
+numbers.sort(reverse=True)
+print(numbers)      #[3, 2, 1]
+# reverse는 정렬이 아니라 순서를 거꾸로 변경하는 것일 뿐
+```
+
+```py
+numbers = [3,2,1]
+
+# sort 메서드
+print(numbers.sort())      # None - 반환값이 없음
+# sorted 함수
+print(sorted(numbers))     # [1, 2, 3] - 반환값이 있다(원본이 안바뀜)
+```
+
+#### sort()와 같이 반환값이 없는 함수는 바로 출력하면 None 출력
+
+- return이나 print에 메서드 바로 쓰지 말고 함수 사용 후 변수이름만 적을 것
+
+예시
+
+```py
+numbers = [3,2,1]
+
+print(numbers.sort())      # None - 반환값이 없음
+
+numbers.sort() 
+print(numbers)		#[1,2,3]
+```
+
+
 
