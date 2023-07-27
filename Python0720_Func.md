@@ -36,7 +36,7 @@ else:
 
 조건문 예시
 
-![contralstatement1](C:\Users\SSAFY\Downloads\0720_1.PNG)
+![contralstatement1](0720_1.PNG)
 
 1. a가 3보다 큰지를 평가  
 2. True 
@@ -45,7 +45,7 @@ else:
 
 
 
-![control2](C:\Users\SSAFY\Downloads\0720_2.PNG)
+![control2](0720_2.PNG)
 
 1. a가 3보다 큰지를 평가  
 2. False

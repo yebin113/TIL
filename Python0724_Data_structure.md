@@ -301,7 +301,7 @@ print(sorted(numbers))     # [1, 2, 3] - 반환값이 있다(원본이 안바뀜
 - `isnumeric() `
   - `isdigit()`과 유사하지만, 몇 가지 추가적인 유니코드 문자들을 인식 (분수, 지수, 루트 기호도 숫자로 인식)
 
-![](C:\Users\SSAFY\Downloads\0724_1.PNG)
+![](0724_1.PNG)
 
 
 
@@ -337,4 +337,4 @@ print(list1)        # [100, 2, 3]
 print(list2)        # [1, 2, 3]
 ```
 
-![](C:\Users\SSAFY\Downloads\0724_2.PNG)
+![](0724_2.PNG)

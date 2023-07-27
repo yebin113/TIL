@@ -30,7 +30,7 @@
   - 함수 구현
 - Output
   - return 값으로 출력
-  ![함수의 구조](C:\Users\SSAFY\Downloads\func1.PNG)
+  ![함수의 구조](func1.PNG)
 
 #### 함수의 정의와 호출
 
@@ -343,7 +343,7 @@ print(a,b)				#1 2
 
 - 예시 (팩토리얼)
 
-  ![factorial](C:\Users\SSAFY\Downloads\func2.PNG)
+  ![factorial](func2.PNG)
 
 ```py
 def factorial(n):
@@ -597,7 +597,7 @@ print(my_math.add(1,2))
 
 - 모듈이 모이면 패키지, 패키지가 모이면 라이브러리
 
-![패키지와 모듈](C:\Users\SSAFY\Downloads\func3.PNG)
+![패키지와 모듈](func3.PNG)
 
 - 패키지 3개 : my_package, math, statistics
 - 모듈 2개 : my_math, tools
