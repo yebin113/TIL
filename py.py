@@ -20,7 +20,8 @@ class Dad(Person):
 
 class FirstChild(Mom,Dad):
     # 다중상속(아빠부터 시작)
-
+    dad_gene = Dad.gene 
+    # 상속 순서를 바꿀수없을때는 따로 변수 지정하기
     def swim(self):
         # 엄마 클래스의 함수 재정의
         return '첫째가 수영'
