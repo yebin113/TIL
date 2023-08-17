@@ -505,7 +505,7 @@ print(cnt)
   - 123,132,213,231,312,321
   - 총 6가지 경우
 
-![Alt text](image.png)
+
 ```
 def f(i,N):
     if i == N:      # 순열 완성
