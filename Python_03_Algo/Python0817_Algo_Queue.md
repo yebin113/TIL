@@ -322,3 +322,254 @@ print(q.popleft())
 print(q.popleft())
 
 ```
+
+---
+# BFS(Breadth First Search)
+- 너비 우선 탐색
+- 탐색의 시작점에 인접한 정점들을 모두 차례로 방문한 후에 방문했던 정점을 시작점으로하여 다시 인접한 정점들을 차례로 방문하는 방식
+
+- 인접한 정점들에 대해 탐색을 한 후, 차례로 다시 너비우선탐색을 진행해야 하므로, 선입선출 형태의 자료구조인 큐를 활용함
+  
+- 큐가 비어있지 않으면 탐색 진행
+
+![BFS](image/0818_1.png)
+
+## BFS의 순서진행도
+1. A 진입
+
+| A | - | - | ... |
+| - | - | - | - |
+1. BCD 큐에 들어옴
+   - 
+| A | BDC |  |...|
+| - | - | - | - |
+1. B의 인접 큐에 넣음
+   - 
+| A | BCD | EF |  |...|
+| - | - | - | - | - |
+1. C의 인접 x
+2. D의 인접 넣기
+
+| A | BCD | EF | GHI |  |...|
+| - | - | - | - | - | - |
+
+
+## BFS 알고리즘
+- 입력 파라미터 : 그래프 G와 탐색 시작점 v 
+``` 
+def BFS(G, v) : # 그래프 G, 탐색 시작점 v
+
+  visited = [0]* (n+1)  # n : 정점의 개수
+  queue = []            # 큐 생성
+  queue.append(v)     # 시작점 v을 큐에 삽입
+
+  while queue:         # 큐가 비어있지 않은 경우
+    t = queue.pop(0)  # 큐의 첫번째 원소 반환
+
+    if not visited[t]:    # 방문되지 않은 곳이라면
+      visited[t] = True   # 방문한 것으로 표시
+      visit(t)            # 정점 t에서 할 일
+
+      for i in G[t]:      # t와 연결된 모든 정점에 대해
+        if not visited[i];  # 방문되지 않은 곳이라면
+          queue.append(i)     # 큐에 넣기
+```
+![Alt text](image/0818_2.png)
+### 초기 상태
+- visited 배열 초기화
+- Q 생성
+- 시작점 engueue
+  
+| A | - | - |
+| - | - | - |
+### A점부터 시작
+- dequeue : A
+- A 방문한 것으로 표시
+- A의 인접점 enqueue
+
+| B | C | D | - | - |
+| - | - | - | - | - |
+
+### 탐색 진행
+- dequeue : B
+- B 방문한 것으로 표시
+- B의 인접점 enqueue
+
+| C | D | E | F | - | - |
+| - | - | - | - | - | - |
+### 탐색 진행
+- dequeue : C
+- C 방문한 것으로 표시
+- C의 인접점 enqueue (없음)
+
+| D | E | F | - | - |
+| - | - | - | - | - |
+
+### 탐색 진행
+- dequeue : D
+- D 방문한 것으로 표시
+- D의 인접점 enqueue
+
+| E | F | G | H | I | - | - |
+| - | - | - | - | - | - | - |
+
+### 탐색 진행
+- dequeue : E
+- E 방문한 것으로 표시
+- E의 인접점 enqueue
+
+| F | G | H | I | - | - |
+| - | - | - | - | - | - |
+
+### 탐색 진행
+- dequeue : F
+- F 방문한 것으로 표시
+- F의 인접점 enqueue
+
+| G | H | I | - | - |
+| - | - | - | - | - |
+
+
+### 탐색 진행
+- dequeue : G
+- G 방문한 것으로 표시
+- G의 인접점 enqueue
+
+| H | I | - | - |
+| - | - | - | - |
+
+### 탐색 진행
+- dequeue : H
+- H 방문한 것으로 표시
+- H의 인접점 enqueue
+
+| I | - | - |
+| - | - | - |
+
+### 탐색 진행
+- dequeue : I
+- I 방문한 것으로 표시
+- I의 인접점 enqueue
+
+| - | - |
+| - | - |
+
+### Q가 비었으므로 탐색 종료
+
+---
+## BFS 예제
+### 초기 상태
+- visited 배열 초기화
+- Q 생성
+- 시작점 enqueue
+- 큐에 들어간 것  visited 표시
+
+``` 
+def BFS(G, v, n) : # 그래프 G, 탐색 시작점 v
+
+  visited = [0]*(n+1)  # n : 정점의 개수
+  queue = []            # 큐 생성
+  queue. append(v)     # 시작점 v을 큐에 삽입
+  visited[v] = 1
+  while queue:          # 큐가 비어있지 않은 경우
+    t = queue.pop(0)  # 큐의 첫번째 원소 반환
+    visit(t)            # 정점 t에서 할 일
+    
+    for i in G[t]:      # t와 연결된 모든 정점에 대해
+      if not visited[i];  # 방문되지 않은 곳이라면
+        queue.append(i)     # 큐에 넣기
+          visited[i] = visited[n] + 1 # n으로부터 1만큼 이동
+
+```
+
+
+### 예제
+- 다음은 연결되어있는 두개의 정점 사이의 간선을 순서대로 나열해놓은 것이다 모든 정점을 너비 우선 탐색하여 경로를 출력하시오(시작 정점 1)
+- 인접 목록
+  - 1, 2, 1, 3, 2, 4, 2, 5, 4, 6, 5, 6, 6, 7, 3, 7
+  - 인접 리스트는 인덱스를 넣는게 더 좋을듯!
+  - `adj = [[],[2, 3],[4, 5],[7],[6],[6],[7],[]]`
+
+![Alt text](image.png)
+```
+"""
+인접 리스트 방법 -> 순서에 따라 달라질 수 있다
+7 8
+2 4 1 2 1 3 3 7 2 5 4 6 5 6 6 7
+"""
+
+
+def bfs(s, V):      # 시작점 s, 마지막 정점 v
+    # visited 생성
+    visited = [0] * (V+1)
+    # 큐 생성
+    Q = []
+    # 시작점 인큐
+    Q.append(s)
+    # 시작점 방문표시
+    visited[s] = 1
+    # q에 정점이 남아있으면 => front != rear
+    while Q:
+        t = Q.pop(0)        # deQ
+        print(t)            # 방문한 정점 출력
+        # 인접한 정점중 인큐되지 않은 정점 w 있으면
+        for w in adj_l[t]:
+            if visited[w] == 0:
+                # w 인큐, 인큐되었음을 표시
+                Q.append(w)
+                visited[w] = visited[t] + 1
+
+
+
+
+V, E = map(int,input().split())     # 1번부터 V번 정점, E개의 간선
+arr = list(map(int,input().split()))
+# 인접리스트
+adj_l = [[] for _ in range(V+1)]
+for i in range(E):
+    v1,v2 = arr[i*2], arr[2*i + 1]
+    adj_l[v1].append(v2)
+    adj_l[v2].append(v1)        # 방향이 없는경우
+bfs(1,7)
+```
+
+
+```
+"""
+행렬 버전
+7 8
+2 4 1 2 1 3 3 7 2 5 4 6 5 6 6 7
+"""
+
+
+def bfs(s, V):      # 시작점 s, 마지막 정점 v
+    # visited 생성
+    visited = [0] * (V+1)
+    # 큐 생성
+    Q = []
+    # 시작점 인큐
+    Q.append(s)
+    # 시작점 방문표시
+    visited[s] = 1
+    # q에 정점이 남아있으면 => front != rear
+    while Q:
+        t = Q.pop(0)        # deQ
+        print(t)            # 방문한 정점 출력
+        # 인접한 정점중 인큐되지 않은 정점 w 있으면
+        for w in range(1,V+1):
+            if adj_m[t][w] == 1 and visited[w] == 0:
+                # w 인큐, 인큐되었음을 표시
+                Q.append(w)
+                visited[w] = visited[t] + 1
+
+
+V, E = map(int,input().split())     # 1번부터 V번 정점, E개의 간선
+arr = list(map(int,input().split()))
+# 인접행렬
+adj_m = [[0]*(V+1) for _ in range(V+1)]
+for i in range(E):
+    v1,v2 = arr[i*2], arr[2*i + 1]
+    adj_m[v1][v2] = 1
+    adj_m[v2][v1] = 1            # 방향이 없는경우
+bfs(1,7)
+```
